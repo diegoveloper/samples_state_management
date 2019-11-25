@@ -1,16 +1,8 @@
-# samples_state_management
+# State management samples
 
-A new Flutter project.
+We will explore different patterns and strategies that we can use as a state management in this demo app
 
-## Getting Started
+## Samples
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- State management with no packages and only with StatefulWidgets
+- TODO..
