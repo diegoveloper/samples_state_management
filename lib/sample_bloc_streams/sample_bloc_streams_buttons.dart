@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'sample_bloc_streams.dart';
+import 'package:provider/provider.dart';
+import 'package:samples_state_management/sample_bloc_streams/sample_streams.dart';
 
 class MyActionButtons extends StatelessWidget {
-  final SampleStreams sampleStreams;
-
-  const MyActionButtons({
-    Key key,
-    this.sampleStreams,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,11 +10,11 @@ class MyActionButtons extends StatelessWidget {
       children: [
         IconButton(
           icon: Icon(Icons.restore),
-          onPressed: sampleStreams.resetCounter,
+          onPressed: Provider.of<SampleStreams>(context, listen: false).resetCounter,
         ),
         IconButton(
           icon: Icon(Icons.check),
-          onPressed: sampleStreams.changeTheme,
+          onPressed: Provider.of<SampleStreams>(context, listen: false).changeTheme,
         ),
       ],
     );

@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:samples_state_management/sample_bloc_notifier/sample_bloc_notifier.dart';
+import 'package:samples_state_management/sample_bloc_notifier/sample_notifier.dart';
+import 'package:samples_state_management/sample_bloc_streams/sample_streams.dart';
 import 'package:samples_state_management/sample_default/sample_default.dart';
 
 import 'sample_bloc_streams/sample_bloc_streams.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHomePage(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SampleNotifier()),
+        Provider<SampleStreams>(create: (_) => SampleStreams())
+      ],
+      child: MaterialApp(
+        home: MyHomePage(),
+      ),
     );
   }
 }

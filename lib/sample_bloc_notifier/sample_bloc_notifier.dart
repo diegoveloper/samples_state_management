@@ -1,42 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:samples_state_management/sample_bloc_notifier/sample_bloc_notifier_buttons.dart';
-
-class SampleNotifier with ChangeNotifier {
-  int counter = 0;
-  bool isDark = false;
-
-  void incrementCounter() {
-    counter++;
-    notifyListeners();
-  }
-
-  void resetCounter() {
-    counter = 0;
-    notifyListeners();
-  }
-
-  void changeTheme() {
-    isDark = !isDark;
-    notifyListeners();
-  }
-}
+import 'package:samples_state_management/sample_bloc_notifier/sample_notifier.dart';
 
 class SampleBLoCNotifier extends StatelessWidget {
-  final notifier = SampleNotifier();
-
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: notifier,
-      builder: (_, __) => Theme(
-        data: notifier.isDark ? ThemeData.dark() : ThemeData.light(),
+    return Consumer<SampleNotifier>(
+      builder: (_, state, __) => Theme(
+        data: state.isDark ? ThemeData.dark() : ThemeData.light(),
         child: Scaffold(
           appBar: AppBar(
-            title: Text("BLoC with Notifier"),
+            title: Text("BLoC, Notifier & Provider"),
             actions: [
-              MyActionButtons(
-                notifier: notifier,
-              ),
+              MyActionButtons(),
             ],
           ),
           body: Center(
@@ -47,14 +24,14 @@ class SampleBLoCNotifier extends StatelessWidget {
                   'You have pushed the button this many times:',
                 ),
                 Text(
-                  '${notifier.counter}',
+                  '${state.counter}',
                   style: Theme.of(context).textTheme.display1,
                 ),
               ],
             ),
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: notifier.incrementCounter,
+            onPressed: state.incrementCounter,
             tooltip: 'Increment',
             child: Icon(Icons.add),
           ),

@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'sample_bloc_notifier.dart';
+import 'package:provider/provider.dart';
+import 'package:samples_state_management/sample_bloc_notifier/sample_notifier.dart';
 
 class MyActionButtons extends StatelessWidget {
-  final SampleNotifier notifier;
-
-  const MyActionButtons({
-    Key key,
-    this.notifier,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,11 +10,11 @@ class MyActionButtons extends StatelessWidget {
       children: [
         IconButton(
           icon: Icon(Icons.restore),
-          onPressed: notifier.resetCounter,
+          onPressed: Provider.of<SampleNotifier>(context,listen: false).resetCounter,
         ),
         IconButton(
           icon: Icon(Icons.check),
-          onPressed: notifier.changeTheme,
+          onPressed: Provider.of<SampleNotifier>(context,listen: false).changeTheme,
         ),
       ],
     );
