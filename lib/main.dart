@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:samples_state_management/sample_bloc_notifier/sample_bloc_notifier.dart';
 import 'package:samples_state_management/sample_default/sample_default.dart';
+import 'package:samples_state_management/sample_provider/sample_provide_notifier.dart';
 
 import 'sample_bloc_streams/sample_bloc_streams.dart';
 
@@ -49,6 +50,18 @@ class MyHomePage extends StatelessWidget {
                 RaisedButton(
                   onPressed: () => _openPage(context, SampleBLoCStreams()),
                   child: Text("Sample BLoC with Streams"),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    final page = SampleProviderNotifier();
+                    _openPage(
+                      context,
+                      MaterialApp(
+                        home: page,
+                      ),
+                    );
+                  },
+                  child: Text("Sample Provider Notifier"),
                 ),
               ],
             ),
