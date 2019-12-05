@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:samples_state_management/sample_bloc_notifier/sample_bloc_notifier.dart';
 import 'package:samples_state_management/sample_default/sample_default.dart';
-import 'package:samples_state_management/sample_provider/sample_provide_notifier.dart';
+import 'package:samples_state_management/sample_provider/provider_notifier.dart';
+import 'package:samples_state_management/sample_provider/sample_provider_notifier.dart';
 
 import 'sample_bloc_streams/sample_bloc_streams.dart';
 
@@ -56,8 +58,18 @@ class MyHomePage extends StatelessWidget {
                     final page = SampleProviderNotifier();
                     _openPage(
                       context,
-                      MaterialApp(
-                        home: page,
+                      MultiProvider(
+                        providers: [
+                          ChangeNotifierProvider(create: (_) => ProviderNotifier()),
+//                          StreamProvider(),
+//                          ChangeNotifierProvider(create: (_) => ProviderNotifier()),
+//                          ChangeNotifierProvider(create: (_) => ProviderNotifier()),
+//                          ChangeNotifierProvider(create: (_) => ProviderNotifier()),
+//                          ChangeNotifierProvider(create: (_) => ProviderNotifier()),
+                        ],
+                        child: MaterialApp(
+                          home: page,
+                        ),
                       ),
                     );
                   },
